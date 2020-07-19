@@ -1,10 +1,5 @@
-import Vue from 'vue';
-import Vuetify, { VApp, VBtn } from 'vuetify/lib';
 import vuetify from '../src/plugins/vuetify';
 import 'vuetify/dist/vuetify.min.css';
-
-Vue.use(Vuetify)
-
 import { addDecorator } from '@storybook/vue';
 
 addDecorator(() => ({

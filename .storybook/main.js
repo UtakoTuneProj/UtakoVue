@@ -1,4 +1,5 @@
 const path = require("path");
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 module.exports = {
     stories: ['../src/**/*.stories.ts'],
@@ -6,7 +7,7 @@ module.exports = {
         config.module.rules.push({
             test: /\.(ts|tsx)$/,
             use: [
-                {loader: require.resolve('ts-loader')}
+                {loader: require.resolve('ts-loader')},
             ],
         }, {
             test: /\.s[ca]ss$/,
@@ -16,6 +17,7 @@ module.exports = {
                 "sass-loader",
             ],
         });
+        config.plugins.push(new VuetifyLoaderPlugin())
         config.resolve.alias = {
             vue: "vue/dist/vue.esm.js",
             "@": path.resolve(__dirname, "../src"),
