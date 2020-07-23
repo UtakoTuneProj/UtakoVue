@@ -10,22 +10,22 @@
               <td>{{ title }}</td>
             </tr><tr>
               <th><v-icon>mdi-account-outline</v-icon></th>
-              <td>{{ user_nickname }}</td>
+              <td>{{ userNickname }}</td>
             </tr><tr>
               <th><v-icon>mdi-clock-outline</v-icon></th>
-              <td>{{ first_retrieve }}</td>
+              <td>{{ firstRetrieve }}</td>
             </tr><tr>
               <th><v-icon>mdi-chart-timeline-variant</v-icon></th>
-              <td>{{ movie_score }}</td>
+              <td>{{ movieScore }}</td>
             </tr><tr>
               <th><v-icon>mdi-eye-outline</v-icon></th>
-              <td>{{ view_counter }}</td>
+              <td>{{ viewCounter }}</td>
             </tr><tr>
               <th><v-icon>mdi-comment-outline</v-icon></th>
-              <td>{{ comment_num }}</td>
+              <td>{{ commentCounter }}</td>
             </tr><tr>
               <th><v-icon>mdi-star-outline</v-icon></th>
-              <td>{{ mylist_counter }}</td>
+              <td>{{ mylistCounter }}</td>
             </tr><tr>
               <th><v-icon>mdi-lightning-bolt-outline</v-icon></th>
               <td>
@@ -47,26 +47,26 @@ import moment from 'moment';
 export default Vue.extend({
   data: () => {
     return {
-      id: 'sm334',
-      title: 'title',
-      first_retrieve: moment('2020-07-07T03:34:00').locale('ja'),
-      user_nickname: 'test',
-      movie_score: '33.4',
-      view_counter: '111',
-      comment_num: '111',
-      mylist_counter: '111',
-      thumbnail: undefined,
-      songindex_set: [
-        '444',
-      ],
     };
+  },
+  props: {
+    id: String,
+    title: String,
+    thumbnail: String,
+    firstRetrieve: moment,
+    userNickname: String,
+    movieScore: Number,
+    viewCounter: Number,
+    commentCounter: Number,
+    mylistCounter: Number,
+    songIndexes: Array,
   },
   computed: {
     thumbnailSrc() {
       return this.thumbnail ? this.thumbnail : '/img/thumbnail_not_found.png';
     },
     isAnalyzed(){
-      return this.songindex_set.length > 0;
+      return this.songIndexes.length > 0;
     },
     linkTarget(){
       return '/movie/' + this.id;
