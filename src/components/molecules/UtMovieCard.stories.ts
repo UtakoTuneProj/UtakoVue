@@ -1,6 +1,8 @@
 import UtMovieCard from './UtMovieCard.vue';
+import { Movie } from '~/@types/movie';
+import { SongIndexV1 } from '~/@types/song_index';
 import moment from 'moment';
-import { withKnobs, text, number, date, array } from '@storybook/addon-knobs';
+import { withKnobs, text, number, date, boolean } from '@storybook/addon-knobs';
 
 export default {
     title: 'UtMovieCard',
@@ -13,52 +15,46 @@ function momentizedDate(name: string, defaultValue: moment.Moment) {
     return moment(stringTimestamp);
 }
 
+function movie() {
+    const id = text('ID', 'sm334');
+    const title = text('タイトル', 'テストのタイトル');
+    const thumbnail = text('サムネイルURL', '');
+    const firstRetrieve = momentizedDate('投稿日時', moment('2020-07-07T19:00:00'));
+    const userNickname = text('投稿者', 'Utako Tune Project');
+    const movieScore = number('スコア', 33.4);
+    const viewCounter = number('再生数', 334);
+    const mylistCounter = number('マイリスト数', 334);
+    const commentCounter = number('コメント数', 334);
+    const isAnalyzed = boolean('解析インデックス', true);
+    const songIndexes: SongIndexV1[] = isAnalyzed ? [
+        { version: 1, index: [1, 1, 1, 1, 1, 1, 1, 1] },
+    ] : [];
+
+    const movieInstance: Movie = {
+        id,
+        title,
+        thumbnail,
+        firstRetrieve,
+        userNickname,
+        movieScore,
+        viewCounter,
+        mylistCounter,
+        commentCounter,
+        songIndexes,
+    };
+    return movieInstance;
+}
+
 export const basic = () => ({
     components: { UtMovieCard },
     props: {
-        id: {
-            default: text('ID', 'sm334'),
-        },
-        title: {
-            default: text('タイトル', 'テストのタイトル'),
-        },
-        thumbnail: {
-            default: text('サムネイルURL', ''),
-        },
-        firstRetrieve: {
-            default: momentizedDate('投稿日時', moment('2020-07-07T19:00:00')),
-        },
-        userNickname: {
-            default: text('投稿者', 'Utako Tune Project'),
-        },
-        movieScore: {
-            default: number('スコア', 33.4),
-        },
-        viewCounter: {
-            default: number('再生数', 334),
-        },
-        mylistCounter: {
-            default: number('マイリスト数', 334),
-        },
-        commentCounter: {
-            default: number('コメント数', 334),
-        },
-        songIndexes: {
-            default: array('解析インデックス', ['1']),
+        movie: {
+            default: movie(),
         },
     },
     template: `
         <UtMovieCard
-            :id="id"
-            :title="title"
-            :thumbnail="thumbnail"
-            :firstRetrieve="firstRetrieve"
-            :userNickname="userNickname"
-            :movieScore="movieScore"
-            :viewCounter="viewCounter"
-            :mylistCounter="mylistCounter"
-            :commentCounter="commentCounter"
-            :songIndexes="songIndexes"
+            :movie="movie"
         />
     `,
 });

@@ -7,25 +7,25 @@
           <tbody>
             <tr>
               <th><v-icon>mdi-music-circle-outline</v-icon></th>
-              <td>{{ title }}</td>
+              <td>{{ movie.title }}</td>
             </tr><tr>
               <th><v-icon>mdi-account-outline</v-icon></th>
-              <td>{{ userNickname }}</td>
+              <td>{{ movie.userNickname }}</td>
             </tr><tr>
               <th><v-icon>mdi-clock-outline</v-icon></th>
-              <td>{{ firstRetrieve.format('llll') }}</td>
+              <td>{{ movie.firstRetrieve.format('llll') }}</td>
             </tr><tr>
               <th><v-icon>mdi-chart-timeline-variant</v-icon></th>
-              <td>{{ movieScore }}</td>
+              <td>{{ movie.movieScore }}</td>
             </tr><tr>
               <th><v-icon>mdi-eye-outline</v-icon></th>
-              <td>{{ viewCounter }}</td>
+              <td>{{ movie.viewCounter }}</td>
             </tr><tr>
               <th><v-icon>mdi-comment-outline</v-icon></th>
-              <td>{{ commentCounter }}</td>
+              <td>{{ movie.commentCounter }}</td>
             </tr><tr>
               <th><v-icon>mdi-star-outline</v-icon></th>
-              <td>{{ mylistCounter }}</td>
+              <td>{{ movie.mylistCounter }}</td>
             </tr><tr>
               <th><v-icon>mdi-lightning-bolt-outline</v-icon></th>
               <td>
@@ -40,44 +40,31 @@
   </v-card>
 </template>
 
-<script>
-import Vue from 'vue';
+<script lang="ts">
+import 'reflect-metadata';
 import moment from 'moment';
+import { Movie } from '~/@types/movie';
+import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 
-export default Vue.extend({
-  data: () => {
-    return {
-    };
-  },
-  props: {
-    id: String,
-    title: String,
-    thumbnail: String,
-    firstRetrieve: moment,
-    userNickname: String,
-    movieScore: Number,
-    viewCounter: Number,
-    commentCounter: Number,
-    mylistCounter: Number,
-    songIndexes: Array,
-  },
-  computed: {
-    thumbnailSrc() {
-      return this.thumbnail ? this.thumbnail : '/img/thumbnail_not_found.png';
-    },
-    isAnalyzed(){
-      return this.songIndexes.length > 0;
-    },
-    linkTarget(){
-      return '/movie/' + this.id;
-    },
-  },
-  methods: {
-    onClick() {
-      this.$emit('click');
-    },
-  },
-});
+@Component
+export default class UtMovieCard extends Vue {
+  @Prop() public movie!: Movie;
+
+  get thumbnailSrc() {
+    return this.movie.thumbnail || '/img/thumbnail_not_found.png';
+  }
+
+  get isAnalyzed() {
+    return this.movie.songIndexes.length > 0;
+  }
+
+  get linkTarget() {
+    return '/movie/' + this.movie.id;
+  }
+
+  @Emit('click')
+  public onClick() { return this.movie; }
+}
 </script>
 
 <style>
