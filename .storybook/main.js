@@ -1,5 +1,5 @@
 const path = require("path");
-const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 
 module.exports = {
     stories: ['../src/**/*.stories.ts'],
@@ -10,7 +10,15 @@ module.exports = {
         config.module.rules.push({
             test: /\.(ts|tsx)$/,
             use: [
-                {loader: require.resolve('ts-loader')},
+                {
+                    loader: require.resolve('ts-loader'),
+                    options: {
+                        transpileOnly: true,
+                        appendTsSuffixTo: [
+                            '\\.vue$'
+                        ],
+                    },
+                },
             ],
         }, {
             test: /\.s[ca]ss$/,
