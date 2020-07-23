@@ -5,7 +5,7 @@ import moment from 'moment';
 import { withKnobs, text, number, date, boolean } from '@storybook/addon-knobs';
 
 export default {
-    title: 'UtMovieCard',
+    title: 'molecules/UtMovieCard',
     component: UtMovieCard,
     decorators: [withKnobs],
 };
