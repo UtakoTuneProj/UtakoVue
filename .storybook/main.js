@@ -16,6 +16,13 @@ module.exports = {
                 "css-loader",
                 "sass-loader",
             ],
+        }, {
+            test: /\.(png|jpe?g|gif|svg|ico)$/i,
+            use: [
+                {
+                    loader: 'file-loader',
+                }
+            ],
         });
         config.plugins.push(new VuetifyLoaderPlugin())
         config.resolve.alias = {

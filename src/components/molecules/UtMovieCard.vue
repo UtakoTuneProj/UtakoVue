@@ -63,7 +63,7 @@ export default Vue.extend({
   },
   computed: {
     thumbnailSrc() {
-      return this.thumbnail ? this.thumbnail : '/public/img/thumbnail_not_found.png';
+      return this.thumbnail ? this.thumbnail : '/img/thumbnail_not_found.png';
     },
     isAnalyzed(){
       return this.songindex_set.length > 0;
