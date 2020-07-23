@@ -13,7 +13,7 @@
               <td>{{ userNickname }}</td>
             </tr><tr>
               <th><v-icon>mdi-clock-outline</v-icon></th>
-              <td>{{ firstRetrieve }}</td>
+              <td>{{ firstRetrieve.format('llll') }}</td>
             </tr><tr>
               <th><v-icon>mdi-chart-timeline-variant</v-icon></th>
               <td>{{ movieScore }}</td>
