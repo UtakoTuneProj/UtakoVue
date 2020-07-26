@@ -36,10 +36,7 @@ import { Vue, Component, Emit } from 'vue-property-decorator';
 
 @Component
 export default class UtPlayerSettingModal extends Vue {
-  public icon: string = 'mdi-account';
-
   public scoreSliderLabel = ['少ない', 'おまかせ', '多い'];
-  public newerSwitchLabel = ['する', 'しない'];
 
   public scoreLevel = 1;
   public isPreferNewer = true;
