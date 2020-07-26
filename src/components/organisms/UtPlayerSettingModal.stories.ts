@@ -1,5 +1,6 @@
 import UtPlayerSettingModal from './UtPlayerSettingModal.vue';
 import { withKnobs } from '@storybook/addon-knobs';
+import { actions } from '@storybook/addon-actions';
 
 export default {
     title: 'organisms/UtPlayerSettingModal',
@@ -9,7 +10,17 @@ export default {
 
 export const basic = () => ({
     components: { UtPlayerSettingModal },
+    props: {
+        actions: {
+            default: actions(
+                'save',
+                'cancel',
+            ),
+        },
+    },
     template: `
-        <UtPlayerSettingModal />
+        <UtPlayerSettingModal
+            v-on="actions"
+        />
     `,
 });

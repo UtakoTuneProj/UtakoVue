@@ -33,24 +33,29 @@
 
 <script lang="ts">
 import 'reflect-metadata';
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component, Emit } from 'vue-property-decorator';
 
 @Component
 export default class UtHeader extends Vue {
+
+  @Emit('click')
   public onClickTop() {
-    return;
+    return {target: 'top'};
   }
 
+  @Emit('click')
   public onClickSearch() {
-    return;
+    return {target: 'search'};
   }
 
+  @Emit('click')
   public onClickPlayer() {
-    return;
+    return {target: 'player'};
   }
 
+  @Emit('click')
   public onClickAccount() {
-    return;
+    return {target: 'account'};
   }
 }
 // 3A3D3F: UtakoDarkGray

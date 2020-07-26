@@ -4,7 +4,9 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 module.exports = {
     stories: ['../src/**/*.stories.ts'],
     addons: [
-        '@storybook/addon-knobs/register'
+        '@storybook/addon-actions/register',
+        '@storybook/addon-knobs/register',
+        '@storybook/addon-viewport/register',
     ],
     webpackFinal: async config => {
         config.module.rules.push({

@@ -3,6 +3,7 @@ import { Movie } from '~/@types/movie';
 import { SongIndexV1 } from '~/@types/song_index';
 import moment from 'moment';
 import { withKnobs, text, number, date, boolean } from '@storybook/addon-knobs';
+import { actions } from '@storybook/addon-actions';
 
 export default {
     title: 'molecules/UtMovieCard',
@@ -51,10 +52,16 @@ export const basic = () => ({
         movie: {
             default: movie(),
         },
+        actions: {
+            default: actions(
+                'click',
+            ),
+        },
     },
     template: `
         <UtMovieCard
             :movie="movie"
+            v-on="actions"
         />
     `,
 });
