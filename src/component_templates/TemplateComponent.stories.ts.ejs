@@ -1,15 +1,15 @@
-import TemplateComponent from './TemplateComponent.vue';
+import <%= name %> from './<%= name %>.vue';
 import { withKnobs } from '@storybook/addon-knobs';
 import { actions } from '@storybook/addon-actions';
 
 export default {
-    title: 'TemplateComponent',
-    component: TemplateComponent,
+    title: '<%= layer %>/<%= name %>',
+    component: <%= name %>,
     decorators: [withKnobs],
 };
 
 export const basic = () => ({
-    components: { TemplateComponent },
+    components: { <%= name %> },
     props: {
         actions: {
             default: actions(
@@ -17,7 +17,7 @@ export const basic = () => ({
         },
     },
     template: `
-        <TemplateComponent
+        <<%= name %>
             @click="onClick"
         />
     `,

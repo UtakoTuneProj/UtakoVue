@@ -2,7 +2,7 @@ const path = require("path");
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 
 module.exports = {
-    stories: ['../src/**/*.stories.ts'],
+    stories: ['../src/components/**/*.stories.ts'],
     addons: [
         '@storybook/addon-actions/register',
         '@storybook/addon-knobs/register',

@@ -1,5 +1,5 @@
 <template>
-  <v-icon>{{ this.icon }}</v-icon>
+  <div>Template Component</div>
 </template>
 
 <script lang="ts">
@@ -7,8 +7,7 @@ import 'reflect-metadata';
 import { Vue, Component } from 'vue-property-decorator';
 
 @Component
-export default class TemplateComponent extends Vue {
-  public icon: string = 'mdi-account';
+export default class <%= name; %> extends Vue {
 }
 </script>
 
