@@ -24,8 +24,8 @@
       <v-checkbox v-model="isPreferNewer" class="mx-4" label="優先する" />
     </div>
     <v-card-actions class="justify-end">
-      <v-btn @click="onSave" text color="error">キャンセル</v-btn>
-      <v-btn @click="onCancel" text color="primary">保存</v-btn>
+      <v-btn @click="onCancel" text color="error">キャンセル</v-btn>
+      <v-btn @click="onSave" text color="primary">保存</v-btn>
     </v-card-actions>
   </v-card>
 </template>
